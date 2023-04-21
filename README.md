@@ -24,6 +24,17 @@ The following **required** functionality is completed:
 - [ ] **A previously created post can be edited from its post page**
 - [ ] **A previously created post can be deleted from its post page**
 
+Stretch Features
+- [ ] Users can only edit and delete posts or delete comments by entering the secret key, which is set by the user during post creation
+- [ ] Upon launching the web app, the user is assigned a random user ID. It will be associated with all posts and comments that they make and displayed on them
+- [ ] Users can repost a previous post by referencing its post ID. On the post page of the new post, the referenced post is displayed and linked, creating a thread
+- [ ] Users can customize the interface, e.g. selecting the color scheme or showing the content and image of each post on the home feed
+- [ ] Users can share and view web videos
+- [ ] Users can set flags such as "Question" or "Opinion" while creating a post. Then, users can filter posts by flags on the home feed.
+- [ ] Users can upload images directly from their local machine as an image file
+- [ ] Display a loading animation whenever data is being fetched
+
+
 The following **optional** features are implemented:
 - [ ] The site displays summary statistics about a user's crew on their crew page 
 
