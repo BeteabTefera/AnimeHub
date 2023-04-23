@@ -17,9 +17,9 @@ const CreatePost = () => {
 
         //Create a new post
         const post = {
-            title: title,
-            content: content,
-            imageURL: imageURL
+            Title: title,
+            Content: content,
+            ImageURL: imageURL
         }
 
         await supabase
@@ -33,8 +33,22 @@ const CreatePost = () => {
 
 
     return (
-        <div className="create-crew">
+        <div className="create-post">
+            <img src='src/components/Images/createpost-img.png' width='500'/>
             <h1>Create a new post</h1>
+
+            <form onSubmit={createPost}>
+                <div className="mini-container">
+                    <  input type="text" id="title" placeholder="Title" required/>
+                </div>
+                <div className="mini-container">
+                    <input type="text" id="content" placeholder="Content(optional)"/>
+                </div>
+                <div className="mini-container">
+                    <input type="text" id="imageURL" placeholder='Image URL (Optional)'/>
+                </div>
+                <button type="submit">Post</button>
+            </form>
             
         </div>
     );

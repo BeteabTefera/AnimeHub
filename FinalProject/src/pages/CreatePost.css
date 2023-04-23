@@ -1,0 +1,48 @@
+
+  .create-post img {
+    margin-top: 50px;
+    margin-bottom: 0px;
+  }
+  
+  .create-post h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .mini-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+
+  #content {
+    height: 150px;
+    text-align: left;
+  }
+  
+  .mini-container input {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+
+  
+  button[type="submit"] {
+    background-color: #ff5e5b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #ff7875;
+  }
+  

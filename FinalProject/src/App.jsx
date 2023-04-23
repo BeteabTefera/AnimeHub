@@ -23,13 +23,15 @@ function App() {
 
   return (
     <div className="App">
-      <div className='top-right'>
-        <Link to ='/create'>Create Post!</Link>
-        <br/>
-        <Link to ='/view'>View Posts</Link>
-        <br/>
-        <Link to ='/'>Home</Link>
+      <div  className='top-left' >
+        <h2 style={{ position: 'absolute', top: 0, left: 80 }}  >Anime Hub</h2>
+        <img style={{ position: 'absolute', top: 0, left: 0 , padding:10}} src='src/components/images/top-left.png' height='50' />
       </div>
+      <div className='top-right' >
+        <Link style={{ color: '#213547',position: 'absolute', top: 0, right: 200 }} to ='/'><h2>Home</h2></Link>
+        <Link style={{ color: '#213547',position: 'absolute', top: 0, right: 50 }} to ='/create'><h2>Create Post</h2></Link>
+      </div>
+
       {routes}
     </div>
   )
