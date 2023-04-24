@@ -1,7 +1,10 @@
-
+.App{
+  display: block;
+}
   .create-post img {
     margin-top: 50px;
     margin-bottom: 0px;
+    place-content: center;
   }
   
   .create-post h1 {
@@ -29,7 +32,6 @@
   }
 
 
-  
   button[type="submit"] {
     background-color: #ff5e5b;
     color: white;
