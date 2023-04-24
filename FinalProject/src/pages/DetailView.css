@@ -1,0 +1,44 @@
+.Comment-Section input {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin: auto;
+    margin-right: 10px;
+}
+
+.Comment-Section {
+    background: whitesmoke;
+    border-radius: 10px;
+    padding: inherit;
+    margin: inherit;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .all-comments {
+    max-height: 300px;
+    overflow-y: scroll;
+    padding-right: 10px;
+    margin-top: 20px;
+    }
+    
+    .all-comments::-webkit-scrollbar {
+    width: 10px;
+    }
+    
+    .all-comments::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    }
+    
+    .all-comments::-webkit-scrollbar-thumb {
+    background: #888;
+    }
+    
+    .all-comments::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    }
+
+    button
+    {
+        margin-right: 10px;
+    }

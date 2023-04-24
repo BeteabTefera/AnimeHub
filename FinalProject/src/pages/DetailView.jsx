@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { supabase } from "../client";
 import styles from "./DetailView.module.css";
+import "./DetailView.css";
 import { Link } from "react-router-dom";
 import TimeAgo from '../components/TimeStamp';
 import EditPost from './EditPost';
@@ -87,12 +88,56 @@ const DetailView = () => {
         .update({
             comment: [...post.comment, newComment]
         }).eq('id', id);
-        
+
         setPost({
           ...post,
           comment: [...post.comment, newComment]
         });
     }
+
+    //delete a comment from the json column on the Posts table in the database
+
+    const deleteComment = async (index) => {
+        // Remove the comment from the post.comment array
+        post.comment.splice(index, 1);
+      
+        // Update the comment column in the database
+        await supabase.from('Posts')
+          .update({
+            comment: post.comment
+          })
+          .eq('id', id);
+      
+        // Update the local state with the new array
+        setPost({
+          ...post,
+          comment: post.comment
+        });
+      }
+
+    //edit the comment in the json column on the Posts table in the database
+    const editComment = async (e, commentIndex, newText) => {
+        e.preventDefault();
+      
+        // Make a copy of the post comments array
+        const updatedComments = [...post.comment];
+      
+        // Update the text of the comment at the given index
+        updatedComments[commentIndex].text = newText;
+      
+        // Update the comment column in the database
+        await supabase.from('Posts')
+          .update({
+            comment: updatedComments
+          }).eq('id', id);
+      
+        // Update the local state to reflect the change
+        setPost({
+          ...post,
+          comment: updatedComments
+        });
+      }
+        
 
 
     if (!post) {
@@ -122,30 +167,46 @@ const DetailView = () => {
 
                 {//this section allows the user to add a comment and show the comments
                 }
-                <div className='Comment-Section'>
+                <div className={'Comment-Section'}>
                     <h3>Comments</h3>
                     <section className='all-comments'>
-                    {
-                        post.comment && post.comment.map((comment, index) => (
+                        {
+                            post.comment && post.comment
+                            .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+                            .map((comment, index) => (
                             <div key={index} className='comment'>
-                            <p>{comment.text}</p>
-                            <p>{comment.timestamp}</p>
+                                {
+                                //this sections skips default comments and shows every comment after index 0
+                                index > 0 && (
+                                    <ul>
+                                        <li>{comment.text} <button className={styles.button} onClick={() => deleteComment(index)}>🗑️</button> | <i><TimeAgo timestamp={comment.timestamp}/></i> </li>
+                                            
+                                        
+                                    </ul>         
+                                )
+                                }
                             </div>
-                        ))
-                    }
+                            ))
+                        }
                     </section>
 
                     <section className='add-comment'>
-                        <form onSubmit={addComment}>
+                        <form onSubmit={(e) => {
+                            e.preventDefault();
+                            addComment(e);
+                            setComment('');
+                        }
+                        }>
                             <input
                                 type='text'
                                 placeholder='Add a comment'
                                 value={comment}
                                 onChange={(e) => setComment(e.target.value)}
                             />
-                            <button type='submit'>Add</button>
+                            <button className="add-button" type='submit'>Add</button>
                         </form>
                     </section>
+
                 </div>
                 <br/>
 
