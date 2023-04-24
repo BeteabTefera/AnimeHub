@@ -13,16 +13,16 @@ The following **required** functionality is completed:
 - [x] **A create form allows users to add new cremates**
   - [x]Posts must contain a title, and optionally additional textual content and/or an image added as an external image URL
 - [x] **A home feed displaying previously created posts**
-  - [x]By default, only the time created, title, and upvotes count for each post is shown on the posts feed
-  - [x]Clicking on a post shall direct the user to a new page for the selected post
+  - [x] By default, only the time created, title, and upvotes count for each post is shown on the posts feed
+  - [x] Clicking on a post shall direct the user to a new page for the selected post
 - [x] **Users can sort posts by either their created time or upvotes count**
 - [x] **Users can search for posts by title**
 - [x] **A separate post page for each created post, where any additional information is shown, including content, image, and comments**
 - [ ] **Users can leave comments underneath a post on the post page**
-- [x]*Each post should have an upvote button on the post page. Each click increases its upvotes count by one**
-  - Users can upvote any post for any number of times, but not downvote
-- [ ] **A previously created post can be edited from its post page**
-- [ ] **A previously created post can be deleted from its post page**
+- [x]**Each post should have an upvote button on the post page. Each click increases its upvotes count by one**
+  - [x] Users can upvote any post for any number of times, but not downvote
+- [x] **A previously created post can be edited from its post page**
+- [x] **A previously created post can be deleted from its post page**
 
 Stretch Features
 - [ ] Users can only edit and delete posts or delete comments by entering the secret key, which is set by the user during post creation
