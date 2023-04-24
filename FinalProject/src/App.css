@@ -3,8 +3,8 @@
   margin: 0 auto;
   padding: 2rem;
   display: table;
+  
 }
-
 
 
 .add-button{
@@ -25,7 +25,9 @@
     animation: logo-spin infinite 20s linear;
   }
 }
-
+h2 {
+  color: black;
+}
 .card {
   padding: 2em;
 }

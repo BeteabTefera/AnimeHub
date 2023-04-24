@@ -12,11 +12,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  background-image: url("src/components/images/background.png");
+  background-size: cover;
+  background-position: center;
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #101011;
   text-decoration: inherit;
 }
 a:hover {
@@ -29,6 +32,7 @@ body {
   /* place-items: revert; */
   min-width: 355px;
   min-height: 100vh;
+
 }
 
 h1 {

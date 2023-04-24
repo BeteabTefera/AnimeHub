@@ -1,59 +1,67 @@
-//This file will be used to create a new post about anime related stuff
-import React from "react";
+import React, { useState } from "react";
 import { supabase } from "../client";
 import "./CreatePost.css";
 
-//This component is used to create a new post
-
 const CreatePost = () => {
+  const [image, setImage] = useState(null);
 
-    const createPost = async (e) => {
-        e.preventDefault();
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
 
-        //Get the values from the form
-        const title = document.getElementById('title').value;
-        const content = document.getElementById('content').value;
-        const imageURL = document.getElementById('imageURL').value;
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
 
-        //Create a new post
-        const post = {
-            Title: title,
-            Content: content,
-            ImageURL: imageURL,
-        }
+    reader.readAsDataURL(file);
+  };
 
-        await supabase
-        .from('Posts')
-        .insert(post)
-        .select();
+  const createPost = async (e) => {
+    e.preventDefault();
 
-        //Redirect to the home page
-        window.location = '/';
-    }
+    const title = document.getElementById("title").value;
+    const content = document.getElementById("content").value;
+    const imageURL = image ? image : document.getElementById("imageURL").value;
 
+    const post = {
+      Title: title,
+      Content: content,
+      ImageURL: imageURL,
+    };
 
-    return (
-        <div className="create-post">
-            <img src='src/components/Images/createpost-img.png' width='500'/>
-            <h1>Create a new post</h1>
+    await supabase.from("Posts").insert(post).select();
 
-            <form onSubmit={createPost}>
-                <div className="mini-container">
-                    <  input type="text" id="title" placeholder="Title" required/>
-                </div>
-                <div className="mini-container">
-                    <input type="text" id="content" placeholder="Content(optional)"/>
-                </div>
-                <div className="mini-container">
-                    <input type="text" id="imageURL" placeholder='Image URL (Optional)'/>
-                </div>
-                <button type="submit">Post</button>
-            </form>
-            
+    window.location = "/";
+  };
+
+  return (
+    <div className="create-post">
+      <img src="src/components/Images/createpost-img.png" width="500" />
+      <h1>Create a new post</h1>
+
+      <form onSubmit={createPost}>
+        <div className="mini-container">
+          <input type="text" id="title" placeholder="Title" required />
         </div>
-    );
+        <div className="mini-container">
+          <input type="text" id="content" placeholder="Content(optional)" />
+        </div>
+        <div className="mini-container">
+          <input type="text" id="imageURL" placeholder="Image URL (Optional)" />
+        </div>
 
+        <section className="upload-submit">
+            <div className="mini-container">
+            <input type="file" id="image" accept="image/*" onChange={handleImageChange} />
+            </div>
 
-}
+            <button type="submit">Post</button>
+        </section>
+   
+        
+      </form>
+    </div>
+  );
+};
 
 export default CreatePost;

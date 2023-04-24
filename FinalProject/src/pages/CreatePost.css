@@ -10,7 +10,16 @@
 
     place-content: center;
   }
-  
+  .upload-submit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  input#image {
+    padding: inherit;
+    margin: auto;
+  }
   .create-post h1 {
     font-size: 32px;
     font-weight: bold;
@@ -22,18 +31,7 @@
 
   }
 
-  input {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: #ffe0e0;
-    margin-right: 10px;
-    width: 100%;
-    max-width: 500px;
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
+  
   #content {
     height: 150px;
     text-align: left;
