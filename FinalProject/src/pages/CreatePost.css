@@ -6,6 +6,9 @@
     width: 500px;
     padding: 90px;
   }
+  input[type="text"] {
+    text-align: left;
+  }
   .create-post img {
 
     place-content: center;

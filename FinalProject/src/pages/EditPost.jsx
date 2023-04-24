@@ -9,36 +9,46 @@ const EditPost = () => {
     const { id } = useParams();
 
     const [post, setPost] = React.useState(null);
-    
+    const [image, setImage] = React.useState(null);
+
     React.useEffect(() => {
-        const getPost = async () => {
-            const { data } = await supabase
-            .from("Posts")
-            .select()
-            .eq("id", id);
-    
-            if (data.length > 0) {
-                setPost(data[0]);
-            }
-        };
-        getPost().catch(console.error);
+      const getPost = async () => {
+        const { data } = await supabase.from("Posts").select().eq("id", id);
+  
+        if (data.length > 0) {
+          setPost(data[0]);
+        }
+      };
+      getPost().catch(console.error);
     }, [id]);
     
     //update the post
     const updatePost = async (e) => {
-        e.preventDefault();
-    
-        //update the post in the database
-        await supabase.from("Posts").update({
-            Title: post.Title,
-            Content: post.Content,
-            ImageURL: post.ImageURL,
-        }).eq("id", id);
-    
-        //redirect to detail view with the specific post
-        window.location = `/detail/${id}`;
+      e.preventDefault();
+  
+      await supabase
+        .from("Posts")
+        .update({
+          Title: post.Title,
+          Content: post.Content,
+          ImageURL: post.ImageURL,
+        })
+        .eq("id", id);
+  
+      window.location = `/detail/${id}`;
+    };
 
-    }
+    const handleImageChange = (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+  
+      reader.onloadend = () => {
+        setImage(reader.result);
+        setPost({ ...post, ImageURL: reader.result });
+      };
+  
+      reader.readAsDataURL(file);
+    };
 
     //have the edit layout similar to the create post layout
     return (
@@ -77,10 +87,23 @@ const EditPost = () => {
                   }
                 />
               </div>
+
               <div className='button-container'>
+
                     <button type="submit" className="btn btn-primary">
                         Update Post
                     </button>
+                    
+                    <input
+                      style={{ marginLeft: "1rem",
+                      marginTop: "1rem",
+                      marginBottom: "1rem",
+                      fontSize: "1rem" }}
+                      type="file"
+                      id="image"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                    />
                     <br />
                     <button className="btn btn-primary">
                     <Link to={`/detail/${post.id}`}>Back</Link>
