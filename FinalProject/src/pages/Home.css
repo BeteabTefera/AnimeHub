@@ -12,11 +12,20 @@
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     margin: 20px;
-    width: 600px;
+    width: 750px;
     padding: 20px;
     position: relative;
   }
   
+  .filter {
+    margin-left: 150px;
+    display: -webkit-box;
+    justify-self: space-between;
+  }
+  .order,
+  .search {
+    margin-right: 10px;
+  }
   .left-corner {
     position: absolute;
     top: 0;
@@ -28,6 +37,16 @@
   }
 
   .order select {
+    margin-left: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 1px 10px;
+  }
+
+  .search input {
+    margin-left: 5px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 10px;

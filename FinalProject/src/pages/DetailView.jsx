@@ -40,11 +40,39 @@ const DetailView = () => {
         window.location = '/';
     }
 
-    //set up state variables for collecting comments
-    const [comment, setComment] = useState('');
-    const [comments, setComments] = useState([]);
+    //get initial upvote count
+    useEffect(() => {
+        const getUpvotes = async () => {
+            const { data } = await supabase
+                .from('Posts')
+                .select('count')
+                .eq('id', id);
 
-    //load comments for the post
+            if (data.length > 0) {
+                setCount(data[0].count);
+            }
+        };
+        getUpvotes().catch(console.error);
+    }, [id]);
+
+
+    //set up state variables for getting upvotes
+    const [count, setCount] = useState(0);
+    
+    const updateCount = async (e) => {
+        e.preventDefault();
+
+        //update the upvote count in the database
+        await supabase.from('Posts')
+        .update({
+            count: count + 1
+        }).eq('id', id);
+
+        setCount((count) => count + 1);
+    }
+
+
+
 
 
     if (!post) {
@@ -57,10 +85,25 @@ const DetailView = () => {
     return (
         <div className={styles.detail}>
             <div className={styles.post}>
-                <p>Posted <TimeAgo timestamp={post.created_at}/></p>
-                <h2>{post.Title}</h2>
-                <p>{post.Content}</p>
-                
+                <section>
+                    <p>Posted <TimeAgo timestamp={post.created_at}/></p>
+                    <h2>{post.Title}</h2>
+                    <p>{post.Content}</p>
+                </section>
+
+                <section className={styles.img}>
+                    {
+                        //this section checks if the post cell has value, if it does it will take the link and display the image
+                        <img src={post.ImageURL} width='400'/>
+                    }  
+                </section>
+
+                <section className='upvotes'>
+    
+                    <button onClick={updateCount}>👍</button>   
+        
+                    <p>Upvotes: {count}</p>
+                </section>
                 <nav>
                     <button className={styles.leftCorner}><Link to={`/edit/${post.id}`}>Edit</Link></button>
                     <button className={styles.leftCorner} onClick={deletePost}>Delete</button>
