@@ -25,19 +25,8 @@ const Home = () => {
         getPosts().catch(console.error);
     }, []);
 
-    //this function will be used to order the posts by newest or most popular
-    const orderPosts = (order) => {
-        //get the posts from the database
-        const getPosts = async () => {
-            const { data } = await supabase
-                .from("Posts")
-                .select()
-                .order("created_at", { ascending: order === "new" ? false : true });
-            //set posts data
-            setPosts(data);
-        };
-        getPosts().catch(console.error);
-    };
+  
+
 
     //this function will be used to search for posts by title
     const searchPosts = (search) => {
@@ -54,6 +43,36 @@ const Home = () => {
         getPosts().catch(console.error);
     };
 
+    //this function will be used to order the posts by newest or oldest
+    const orderPosts = (order) => {
+        // get the posts from the database
+        const getPosts = async () => {
+          let { data } = await supabase.from("Posts").select();
+      
+          // sort the posts based on the selected option
+          if (order === "upvotes") {
+            data = data.sort((a, b) => b.count - a.count);
+          } else {
+            const ascending = order === "asc";
+            data = data.sort((a, b) => {
+              if (a.created_at < b.created_at) {
+                return ascending ? -1 : 1;
+              }
+              if (a.created_at > b.created_at) {
+                return ascending ? 1 : -1;
+              }
+              return 0;
+            });
+          }
+      
+          // set posts data
+          setPosts(data);
+        };
+      
+        getPosts().catch(console.error);
+      };
+
+
 
     //display the posts and link to the detail page when title is clicked
     return (
@@ -62,8 +81,9 @@ const Home = () => {
                 <div className="order">
                     <h3>Order by:{''}
                         <select onChange={(e) => orderPosts(e.target.value)}>
-                            <option value="new">Newest</option>
-                            <option value="old">Most Popular</option>
+                            <option value="desc">Newest</option>
+                            <option value="asc">Old</option>
+                            <option value="upvotes">Upvotes</option>
                         </select>
                     </h3>
                 </div>
