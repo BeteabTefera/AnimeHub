@@ -83,7 +83,7 @@ const Home = () => {
                             <h3>
                                 <Link to={`/detail/${post.id}`}>{post.Title}</Link>
                             </h3>
-                            <p>{post.Count} Upvotes</p>
+                            <p>{post.count} Upvotes</p>
                         </div>
                     )) : (
                         <div>

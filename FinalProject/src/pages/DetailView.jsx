@@ -94,7 +94,7 @@ const DetailView = () => {
                 <section className={styles.img}>
                     {
                         //this section checks if the post cell has value, if it does it will take the link and display the image
-                        <img src={post.ImageURL} width='400'/>
+                        <img src={post.ImageURL} width='500'/>
                     }  
                 </section>
 
