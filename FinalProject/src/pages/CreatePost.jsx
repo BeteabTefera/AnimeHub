@@ -19,7 +19,9 @@ const CreatePost = () => {
         const post = {
             Title: title,
             Content: content,
-            ImageURL: imageURL
+            ImageURL: imageURL,
+            //comments will be a json array
+            Comments: [],
         }
 
         await supabase

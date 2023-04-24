@@ -71,10 +71,6 @@ const DetailView = () => {
         setCount((count) => count + 1);
     }
 
-
-
-
-
     if (!post) {
         return <h1>Loading...</h1>;
     }
@@ -99,11 +95,19 @@ const DetailView = () => {
                 </section>
 
                 <section className='upvotes'>
-    
                     <button onClick={updateCount}>👍</button>   
-        
                     <p>Upvotes: {count}</p>
                 </section>
+
+                {//this section allows the user to add a comment and show the comments
+                }
+                <div className='Comment-Section'>
+
+                </div>
+
+
+
+
                 <nav>
                     <button className={styles.leftCorner}><Link to={`/edit/${post.id}`}>Edit</Link></button>
                     <button className={styles.leftCorner} onClick={deletePost}>Delete</button>
