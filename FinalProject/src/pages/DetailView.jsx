@@ -58,7 +58,6 @@ const DetailView = () => {
 
     //set up state variables for getting upvotes
     const [count, setCount] = useState(0);
-    
     const updateCount = async (e) => {
         e.preventDefault();
 
@@ -71,12 +70,34 @@ const DetailView = () => {
         setCount((count) => count + 1);
     }
 
+    //set up state variables for comments
+    const [comment, setComment] = useState('');
+
+    //add a comment to the json column on the Posts table in the database
+    const addComment = async (e) => {
+        e.preventDefault();
+
+        const newComment = {
+            text: comment,
+            timestamp: new Date().toISOString()
+        };
+
+        //update the comment column in the database
+        await supabase.from('Posts')
+        .update({
+            comment: [...post.comment, newComment]
+        }).eq('id', id);
+        
+        setPost({
+          ...post,
+          comment: [...post.comment, newComment]
+        });
+    }
+
+
     if (!post) {
         return <h1>Loading...</h1>;
     }
-
-    //display the post and allow the user to link to edit and delete
-    //also display the image
     
     return (
         <div className={styles.detail}>
@@ -102,10 +123,31 @@ const DetailView = () => {
                 {//this section allows the user to add a comment and show the comments
                 }
                 <div className='Comment-Section'>
+                    <h3>Comments</h3>
+                    <section className='all-comments'>
+                    {
+                        post.comment && post.comment.map((comment, index) => (
+                            <div key={index} className='comment'>
+                            <p>{comment.text}</p>
+                            <p>{comment.timestamp}</p>
+                            </div>
+                        ))
+                    }
+                    </section>
 
+                    <section className='add-comment'>
+                        <form onSubmit={addComment}>
+                            <input
+                                type='text'
+                                placeholder='Add a comment'
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}
+                            />
+                            <button type='submit'>Add</button>
+                        </form>
+                    </section>
                 </div>
-
-
+                <br/>
 
 
                 <nav>
