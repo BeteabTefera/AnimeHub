@@ -4,15 +4,13 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  background-image: url("src/components/images/background.png");
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/f/fb/Light_blue.png");
   background-size: cover;
   background-position: center;
 }
