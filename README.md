@@ -39,7 +39,7 @@ Stretch Features
 
 Here's a walkthrough of implemented user stories:
 
-<img src='' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/BeteabTefera/AnimeHub/blob/main/Walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with Lice Cap 
@@ -52,7 +52,9 @@ GIF created with Lice Cap
 
 Describe any challenges encountered while building the app.
 
-The direct, link was a problem. I will try to figure it out within the 48 hour extension.
+The logo image keeps broken but aside that everything is done well.
+Of course I plan to work on it more to make it scalable and more user oriented
+
 
 ## License
 
