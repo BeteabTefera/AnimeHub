@@ -1,4 +1,4 @@
-# CodePathFinalProject
+# Anime Hub
 
 Submitted by: **Beteab Tefera**
 
