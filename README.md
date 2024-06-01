@@ -1,7 +1,6 @@
 # Anime Hub
-
-Submitted by: **Beteab Tefera**
-
+# started working on it again
+  - need to activate supabase []
 This web app: **The Anime Hub app is a web application that allows users to view and interact with anime-related content. Users can create an account, log in, and view a list of anime titles, read detailed information about each anime, and leave comments on individual anime pages. The app is built using React and Supabase, and leverages various React libraries and Supabase features to implement different functionalities such as authentication, API requests, state management, and database updates. The application uses a PostgreSQL database to store anime information and user comments, and Supabase provides the necessary APIs and tools to connect to and manipulate this database. Overall, the app aims to provide anime fans with a user-friendly, interactive platform to discover, explore, and share their favorite anime titles.**
 
 Time spent: **25** hours spent in total
