@@ -40,6 +40,7 @@ Here's a walkthrough of implemented user stories:
 ## Vesion 1
 <img src='https://github.com/BeteabTefera/AnimeHub/blob/main/Walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 ## Version 2
+
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with Lice Cap 
 <!-- Recommended tools:
